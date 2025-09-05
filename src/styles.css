@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-10: #3f001b;
+  --primary-20: #65002f;
+  --primary-25: #7a003a;
+  --primary-30: #8f0045;
+  --primary-35: #a40050;
+  --primary-40: #ba005c;
+  --primary-50: #e80074;
+  --primary-60: #ff4a8e;
+  --primary-70: #ff84a9;
+  --primary-80: #ffb1c5;
+  --primary-90: #ffd9e1;
+  --primary-95: #ffecef;
+  --primary-98: #fff8f8;
+  --primary-99: #fffbff;
+
+  --neutral-0: #000000;
+  --neutral-4: #120d0e;
+  --neutral-6: #171213;
+  --neutral-10: #201a1b;
+  --neutral-12: #241e1f;
+  --neutral-17: #2f2829;
+  --neutral-20: #352f30;
+  --neutral-22: #3a3334;
+  --neutral-24: #3e3738;
+  --neutral-25: #413a3b;
+  --neutral-30: #4c4546;
+  --neutral-35: #585052;
+  --neutral-40: #655c5e;
+  --neutral-50: #7e7576;
+  --neutral-60: #988e90;
+  --neutral-70: #b3a9aa;
+  --neutral-80: #cfc4c5;
+  --neutral-87: #e3d7d8;
+  --neutral-90: #ece0e1;
+  --neutral-92: #f1e5e6;
+  --neutral-95: #faeeef;
+  --neutral-94: #f7ebec;
+  --neutral-96: #fdf1f2;
+  --neutral-98: #fff8f8;
+  --neutral-99: #fffbff;
+  --neutral-100: #ffffff;
+
+  --variant-0: #000000;
+  --variant-10: #24191b;
+  --variant-20: #3a2d30;
+  --variant-25: #45383b;
+  --variant-30: #514346;
+  --variant-35: #5d4f52;
+  --variant-40: #6a5a5e;
+  --variant-50: #847376;
+  --variant-60: #9e8c90;
+  --variant-70: #baa7aa;
+  --variant-80: #d6c2c5;
+  --variant-90: #f3dde1;
+  --variant-95: #ffecef;
+  --variant-98: #fff8f8;
+  --variant-99: #fffbff;
+  --variant-100: #ffffff;
+
+  --surface: var(--neutral-98);
+  --on-surface: var(--neutral-10);
+  --on-surface-variant: var(--neutral-30);
+
+  --outline: var(--variant-50);
+
+  --primary: var(--primary-40);
+  --on-primary: #fff;
+  --primary-container: var(--primary-90);
+  --on-primary-container: var(--primary-30);
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  margin: 0px;
+  min-height: 100vh;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}

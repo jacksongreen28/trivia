@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 120,
     "singleQuote": true,
     "overrides": [
       {
@@ -27,7 +27,6 @@
     "@angular/core": "^20.2.0",
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
-    "@angular/router": "^20.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

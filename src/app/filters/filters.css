@@ -1,0 +1,87 @@
+:host {
+  display: block;
+}
+
+form {
+  display: grid;
+  gap: 24px;
+
+  @media (width > 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+label {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.form-group {
+  display: grid;
+  gap: 4px;
+}
+
+select {
+  --select-arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  color: var(--on-surface-variant);
+  appearance: none;
+  background-color: var(--variant-99);
+  background-image: var(--select-arrow);
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid var(--outline);
+  border-radius: 4px;
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--primary-40);
+    outline: 2px solid var(--primary-90);
+  }
+}
+
+input {
+  caret-color: var(--primary-10);
+  padding: 0.375rem 0.75rem;
+  color: var(--on-surface-variant);
+  background-color: var(--variant-99);
+  border: 1px solid var(--outline);
+  border-radius: 4px;
+
+  &::selection {
+    background-color: var(--primary-90);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--primary-40);
+    outline: 2px solid var(--primary-90);
+  }
+}
+
+button {
+  grid-column: -2;
+  justify-self: end;
+  letter-spacing: 1px;
+  font-weight: 500;
+  padding: 8px 24px;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 250ms;
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-50);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-20);
+    outline-offset: 2px;
+  }
+}
