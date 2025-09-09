@@ -17,3 +17,10 @@ main {
   max-width: 100ch;
   margin-inline: auto;
 }
+
+.error {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-block-start: 2em;
+  text-align: center;
+}

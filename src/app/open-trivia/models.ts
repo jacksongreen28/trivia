@@ -1,15 +1,29 @@
 export interface TriviaResponse {
   response_code: number;
-  results: Question[];
+  results: TriviaResult[];
 }
 
-export interface Question {
+export interface TriviaResult {
   type: string;
   difficulty: string;
   category: string;
   question: string;
   correct_answer: string;
   incorrect_answers: string[];
+}
+
+export interface TriviaFilters {
+  amount: number;
+  category: number;
+}
+
+export interface CategoryResponse {
+  trivia_categories: Category[];
+}
+
+export interface Category {
+  id: number;
+  name: string;
 }
 
 export const ResponseMessages = [

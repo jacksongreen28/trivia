@@ -1,20 +1,17 @@
-<form>
+<form #filters="ngForm" (ngSubmit)="emitFilters()">
   <div class="form-group">
     <label for="category">Category</label>
-    <select name="category" id="category">
-      <option value="">All</option>
-      <option value="dog">Dog</option>
-      <option value="cat">Cat</option>
-      <option value="hamster">Hamster</option>
-      <option value="parrot">Parrot</option>
-      <option value="spider">Spider</option>
-      <option value="goldfish">Goldfish</option>
+    <select name="category" id="category" [(ngModel)]="category">
+      <option [value]="0">All</option>
+      @for (category of categories(); track $index) {
+        <option [value]="category.id">{{ category.name }}</option>
+      }
     </select>
   </div>
 
   <div class="form-group">
     <label for="amount">Number of questions</label>
-    <input type="text" inputmode="numeric" name="amount" id="amount" pattern="[0-9]+" />
+    <input type="text" inputmode="numeric" id="amount" name="amount" pattern="[0-9]+" [(ngModel)]="amount" />
   </div>
 
   <button type="submit">Get questions</button>

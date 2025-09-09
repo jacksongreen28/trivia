@@ -2,5 +2,12 @@
   <span>Trivia</span>
 </header>
 <main>
-  <app-filters />
+  <app-filters (filtersChange)="getQuestions($event)" />
+  @if (response$ | async; as response) {
+    @if (response.response_code > 0) {
+      <p class="error">{{ errorCodes[1] }}</p>
+    } @else {
+      <app-question-list [results]="response.results" />
+    }
+  }
 </main>
