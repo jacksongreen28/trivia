@@ -1,4 +1,12 @@
 :host {
   display: block;
-  margin-inline: 3rem;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: 2rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

@@ -1,3 +1,7 @@
-@for (result of results(); track $index) {
-  <app-question-card [triviaResult]="result" />
-}
+<ul>
+  @for (result of results(); track $index) {
+    <li>
+      <app-question-card [triviaResult]="result" [style.--category-hue]="result.category | categoryHue" />
+    </li>
+  }
+</ul>

@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class OpenTriviaSerivce {
+export class OpenTriviaService {
   private readonly basePath = 'https://opentdb.com';
   private readonly http = inject(HttpClient);
 

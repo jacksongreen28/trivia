@@ -1,16 +1,37 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { TriviaResult } from '../open-trivia/models';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TitleCasePipe } from '@angular/common';
+import { AmpersandPipe } from './ampersand-pipe';
 
 @Component({
   selector: 'app-question-card',
-  imports: [],
+  imports: [TitleCasePipe, AmpersandPipe],
   templateUrl: './question-card.html',
   styleUrl: './question-card.css',
 })
 export class QuestionCard {
-  private readonly sanatizer = inject(DomSanitizer);
+  private readonly sanitizer = inject(DomSanitizer);
   public readonly triviaResult = input.required<TriviaResult>();
 
-  protected safeQuestion = computed(() => this.sanatizer.bypassSecurityTrustHtml(this.triviaResult().question));
+  protected possibleAnswers = computed(() => {
+    const allAnswers = this.triviaResult().incorrect_answers;
+    allAnswers.push(this.triviaResult().correct_answer);
+
+    // Shuffle correct answer with the incorrect ones.
+    // This shuffle is good enough when comparing randomness with time/space complexity,
+    // plus it's easy to read I think.
+    return allAnswers
+      .map((answer) => ({ answer, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ answer }) => this.sanitizer.bypassSecurityTrustHtml(answer));
+  });
+
+  protected safeQuestion = computed(() => {
+    let question = this.triviaResult().question;
+    if (this.triviaResult().type === 'boolean') {
+      question = '<strong>True or false: </strong>' + question;
+    }
+    return this.sanitizer.bypassSecurityTrustHtml(question);
+  });
 }

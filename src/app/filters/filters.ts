@@ -1,7 +1,7 @@
 import { Component, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { OpenTriviaSerivce } from '../open-trivia/open-trivia';
 import { TriviaFilters } from '../open-trivia/models';
+import { OpenTriviaService } from '../open-trivia/open-trivia';
 
 @Component({
   selector: 'app-filters',
@@ -11,7 +11,7 @@ import { TriviaFilters } from '../open-trivia/models';
 })
 export class Filters {
   public readonly filtersChange = output<TriviaFilters>();
-  protected readonly categories = inject(OpenTriviaSerivce).categories;
+  protected readonly categories = inject(OpenTriviaService).categories;
 
   protected readonly amount = signal(10);
   protected readonly category = signal(0);

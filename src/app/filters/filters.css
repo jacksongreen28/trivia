@@ -6,7 +6,7 @@ form {
   display: grid;
   gap: 24px;
 
-  @media (width > 500px) {
+  @media (width > 600px) {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -35,6 +35,8 @@ select {
   background-size: 16px 12px;
   border: 1px solid var(--outline);
   border-radius: 4px;
+  /* Set this to 0 so it will shrink with the grid */
+  min-inline-size: 0;
 
   &:focus,
   &:focus-visible {
@@ -75,13 +77,19 @@ button {
   cursor: pointer;
   transition: background-color 250ms;
 
-  &:hover,
-  &:focus {
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
     background-color: var(--primary-50);
   }
 
-  &:focus-visible {
+  &:focus-visible:not(:disabled) {
     outline: 2px solid var(--primary-20);
     outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: var(--neutral-80);
+    color: var(--neutral-40);
+    cursor: default;
   }
 }
