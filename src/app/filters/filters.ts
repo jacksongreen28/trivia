@@ -2,10 +2,11 @@ import { Component, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TriviaFilters } from '../open-trivia/models';
 import { OpenTriviaService } from '../open-trivia/open-trivia';
+import { MaxValue } from './max-value';
 
 @Component({
   selector: 'app-filters',
-  imports: [FormsModule],
+  imports: [FormsModule, MaxValue],
   templateUrl: './filters.html',
   styleUrl: './filters.css',
 })

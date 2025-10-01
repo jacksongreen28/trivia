@@ -11,7 +11,16 @@
 
   <div class="form-group">
     <label for="amount">Number of questions</label>
-    <input type="text" inputmode="numeric" id="amount" name="amount" pattern="[0-9]+" [(ngModel)]="amount" />
+    <input
+      type="text"
+      inputmode="numeric"
+      id="amount"
+      name="amount"
+      pattern="[0-9]+"
+      [(ngModel)]="amount"
+      [appMaxValue]="50"
+      required
+    />
   </div>
 
   <button type="submit" [disabled]="filtersForm.invalid">Get questions</button>
