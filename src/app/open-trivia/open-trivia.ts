@@ -13,17 +13,20 @@ export class OpenTriviaService {
 
   public readonly categories = toSignal(
     this.getCategories().pipe(
-      map((response) => response.trivia_categories.sort((a, b) => a.name.localeCompare(b.name)))
+      map((response) => response.trivia_categories.sort((a, b) => a.name.localeCompare(b.name))),
     ),
-    { initialValue: [] }
+    { initialValue: [] },
   );
+
+  public getSessionToken() {
+    return this.http.get<{ token: string }>(`${this.basePath}/api_token.php`, { params: { command: 'request' } });
+  }
 
   public getTriviaResponse(filters: TriviaFilters) {
     if (filters.category === 0) {
       return this.http.get<TriviaResponse>(`${this.basePath}/api.php?`, { params: { amount: filters.amount } });
     }
     return this.http.get<TriviaResponse>(`${this.basePath}/api.php?`, { params: { ...filters } });
-
   }
 
   private getCategories() {
