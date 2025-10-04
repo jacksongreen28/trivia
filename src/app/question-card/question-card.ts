@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { TriviaResult } from '../open-trivia/models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TitleCasePipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { AmpersandPipe } from './ampersand-pipe';
   imports: [TitleCasePipe, AmpersandPipe],
   templateUrl: './question-card.html',
   styleUrl: './question-card.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionCard {
   private readonly sanitizer = inject(DomSanitizer);

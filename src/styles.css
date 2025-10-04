@@ -1,13 +1,13 @@
 :root {
+  --primary: oklch(50% 0.28 350);
+  --primary-foreground: #fff;
+  --primary-light: oklch(from var(--primary) 90% calc(c * .2) h);
+  --primary-dark: oklch(from var(--primary) 30% calc(c * .8) h);
+
   --background: oklch(98% 0 0);
   --foreground: oklch(20% 0 0);
   --foreground-dim: oklch(40% 0 0);
   --outline: oklch(60% 0 0);
-
-  --primary-foreground: #fff;
-  --primary: oklch(50% 0.28 295);
-  --primary-light: oklch(from var(--primary) 90% calc(c * .2) h);
-  --primary-dark: oklch(from var(--primary) 30% calc(c * .8) h);
 }
 
 body {
@@ -25,4 +25,18 @@ input,
 select,
 button {
   font: inherit;
+}
+
+a {
+  color: var(--primary);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    text-decoration: none;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
 }

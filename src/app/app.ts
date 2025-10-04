@@ -1,14 +1,15 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Filters } from './filters/filters';
 import { Observable } from 'rxjs';
 import { ResponseMessages, TriviaFilters, TriviaResponse } from './open-trivia/models';
 import { OpenTriviaService } from './open-trivia/open-trivia';
 import { QuestionList } from './question-list/question-list';
-import { AsyncPipe } from '@angular/common';
+import { About } from './about/about';
 
 @Component({
   selector: 'app-root',
-  imports: [AsyncPipe, Filters, QuestionList],
+  imports: [AsyncPipe, Filters, QuestionList, About],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

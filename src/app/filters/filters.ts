@@ -1,4 +1,4 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TriviaFilters } from '../open-trivia/models';
 import { OpenTriviaService } from '../open-trivia/open-trivia';
@@ -9,6 +9,7 @@ import { MaxValue } from './max-value';
   imports: [FormsModule, MaxValue],
   templateUrl: './filters.html',
   styleUrl: './filters.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Filters {
   public readonly filtersChange = output<TriviaFilters>();

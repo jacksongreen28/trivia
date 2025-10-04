@@ -1,0 +1,14 @@
+<button aria-label="About this application" class="open-button" (click)="openDialog()">
+  <fa-icon [icon]="infoIcon" />
+</button>
+
+<dialog #aboutDialog closedby="any">
+  <button aria-label="Close dialog" class="close-button" (click)="closeDialog()">
+    <fa-icon [icon]="closeIcon" />
+  </button>
+  <h2>About this app</h2>
+  <p>
+    This application is built using the free API provided by the <a href="https://opentdb.com">Open Trivia Database</a>.
+    Information about the terms by which the questions and answers are provided can be found on their site.
+  </p>
+</dialog>

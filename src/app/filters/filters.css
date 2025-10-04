@@ -76,14 +76,13 @@ button {
   cursor: pointer;
   transition: background-color 250ms;
 
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
+  &:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--primary) 85%, var(--primary-foreground) 15%)
   }
 
   &:focus-visible:not(:disabled) {
-    background-color: color-mix(in oklch, var(--primary) 85%, var(--primary-foreground) 15%);
-    outline: 2px solid var(--outline);
+    background-color: color-mix(in oklch, var(--primary) 80%, var(--primary-foreground) 20%);
+    outline: 2px solid var(--primary-dark);
     outline-offset: 2px;
   }
 
