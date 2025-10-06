@@ -1,13 +1,13 @@
 :root {
-  --primary: oklch(50% 0.28 350);
+  --primary: oklch(50% 70% 350);
   --primary-foreground: #fff;
   --primary-light: oklch(from var(--primary) 90% calc(c * .2) h);
   --primary-dark: oklch(from var(--primary) 30% calc(c * .8) h);
 
-  --background: oklch(98% 0 0);
-  --foreground: oklch(20% 0 0);
-  --foreground-dim: oklch(40% 0 0);
-  --outline: oklch(60% 0 0);
+  --background: oklch(from var(--primary) 98% 2% h);
+  --foreground: oklch(from var(--primary) 20% 2% h);
+  --foreground-dim: oklch(from var(--primary) 40% 2% h);
+  --outline: oklch(from var(--primary) 60% 2% h);
 }
 
 body {

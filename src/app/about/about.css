@@ -27,7 +27,7 @@ dialog {
   border: none;
   background-color: var(--background);
   color: var(--foreground);
-  max-width: 400px;
+  max-width: min(100% - 6rem, 400px);
   border-radius: 32px;
   padding: 2rem;
 
@@ -72,4 +72,9 @@ h2 {
 
 p {
   margin: 0;
+  text-wrap: pretty;
+
+  &:not(:last-of-type) {
+    margin-block-end: 1lh;
+  }
 }

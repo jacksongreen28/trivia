@@ -9,7 +9,7 @@ import { AmpersandPipe } from './ampersand-pipe';
   imports: [TitleCasePipe, AmpersandPipe],
   templateUrl: './question-card.html',
   styleUrl: './question-card.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuestionCard {
   private readonly sanitizer = inject(DomSanitizer);
@@ -20,12 +20,10 @@ export class QuestionCard {
     allAnswers.push(this.triviaResult().correct_answer);
 
     // Shuffle correct answer with the incorrect ones.
-    // This shuffle is good enough when comparing randomness with time/space complexity,
-    // plus it's easy to read I think.
+    // This shuffle is good enough for my needs here.
     return allAnswers
-      .map((answer) => ({ answer, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ answer }) => this.sanitizer.bypassSecurityTrustHtml(answer));
+      .sort(() => Math.random() - Math.random())
+      .map((answer) => this.sanitizer.bypassSecurityTrustHtml(answer));
   });
 
   protected safeQuestion = computed(() => {
