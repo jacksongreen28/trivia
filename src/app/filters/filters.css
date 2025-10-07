@@ -64,7 +64,6 @@ input {
 }
 
 button {
-  grid-column: -2;
   justify-self: end;
   letter-spacing: 1px;
   font-weight: 500;
@@ -75,6 +74,10 @@ button {
   border: none;
   cursor: pointer;
   transition: background-color 250ms;
+
+  @media (width > 600px) {
+    grid-column: -2;
+  }
 
   &:hover:not(:disabled) {
     background-color: color-mix(in oklch, var(--primary) 80%, var(--primary-foreground) 20%)
