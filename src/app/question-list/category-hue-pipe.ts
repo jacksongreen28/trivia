@@ -10,9 +10,9 @@ export class CategoryHuePipe implements PipeTransform {
   protected readonly categories = inject(OpenTriviaService).categories;
 
   transform(category: string): number {
-    const hueStep = Math.round(360 / this.categories().length);
+    const hueStep = Math.round(240 / this.categories().length);
     const index = this.categories().findIndex((c) => c.name === category);
 
-    return Math.round(((index + 1) * hueStep) % 360);
+    return index * hueStep;
   }
 }

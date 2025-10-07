@@ -1,8 +1,8 @@
 :root {
   --primary: oklch(50% 70% 350);
   --primary-foreground: #fff;
-  --primary-light: oklch(from var(--primary) 90% calc(c * .2) h);
-  --primary-dark: oklch(from var(--primary) 30% calc(c * .8) h);
+  --primary-light: oklch(from var(--primary) 90% 15% h);
+  --primary-dark: oklch(from var(--primary) 30% 55% h);
 
   --background: oklch(from var(--primary) 98% 2% h);
   --foreground: oklch(from var(--primary) 20% 2% h);

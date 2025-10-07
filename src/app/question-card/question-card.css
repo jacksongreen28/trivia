@@ -1,10 +1,9 @@
 :host {
-  /* Add 180 before adjusting the hue just to get on the opposite side of the color wheel */
-  --card-color: oklch(from var(--primary) l c calc(h + 180 + var(--category-hue, 15)));
-  --card-color-10: oklch(from var(--card-color) 10% calc(c * 0.75) h);
-  --card-color-30: oklch(from var(--card-color) 30% calc(c * 0.75) h);
-  --card-color-85: oklch(from var(--card-color) 85% calc(c * 0.4) h);
-  --card-color-95: oklch(from var(--card-color) 95% calc(c * 0.08) h);
+  --card-color: oklch(from var(--primary) l c calc(h - 120 + var(--category-hue, 15)));
+  --card-color-10: oklch(from var(--card-color) 10% 50% h);
+  --card-color-30: oklch(from var(--card-color) 30% 50% h);
+  --card-color-85: oklch(from var(--card-color) 85% 30% h);
+  --card-color-95: oklch(from var(--card-color) 95% 5% h);
 
   interpolate-size: allow-keywords;
   display: grid;
