@@ -23,6 +23,10 @@
   }
 }
 
+svg {
+  height: 24px;
+}
+
 dialog {
   border: none;
   background-color: var(--background);

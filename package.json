@@ -22,13 +22,12 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.2.8",
     "@angular/common": "^20.2.0",
     "@angular/compiler": "^20.2.0",
     "@angular/core": "^20.2.0",
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
-    "@fortawesome/angular-fontawesome": "^3.0.0",
-    "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "prettier": "^3.6.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
