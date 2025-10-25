@@ -1,24 +1,25 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TriviaFilters } from '../open-trivia/models';
-import { OpenTriviaService } from '../open-trivia/open-trivia';
 import { MaxValue } from './max-value';
+import { Categories, QuestionsQueryParams } from '../trivia-api/models';
+import { SnakeToSentencePipe } from '../trivia-api/snake-to-sentence-pipe';
+import { toParams } from './to-params';
 
 @Component({
   selector: 'app-filters',
-  imports: [FormsModule, MaxValue],
+  imports: [FormsModule, MaxValue, SnakeToSentencePipe],
   templateUrl: './filters.html',
   styleUrl: './filters.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Filters {
-  public readonly filtersChange = output<TriviaFilters>();
-  protected readonly categories = inject(OpenTriviaService).categories;
+  public readonly filtersChange = output<QuestionsQueryParams>();
 
-  protected readonly amount = signal(10);
-  protected readonly category = signal(0);
+  protected readonly limit = signal(10);
+  protected readonly category = signal<string | undefined>(undefined);
+  protected categories = Categories;
 
   protected emitFilters() {
-    this.filtersChange.emit({ amount: this.amount(), category: this.category() });
+    this.filtersChange.emit(toParams({ limit: this.limit(), categories: this.category() }));
   }
 }

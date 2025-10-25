@@ -2,22 +2,22 @@
   <div class="form-group">
     <label for="category">Category</label>
     <select name="category" id="category" [(ngModel)]="category">
-      <option [value]="0">All</option>
-      @for (category of categories(); track $index) {
-        <option [value]="category.id">{{ category.name }}</option>
+      <option [value]="undefined">All</option>
+      @for (category of categories; track $index) {
+        <option [value]="category">{{ category | snakeToSentence }}</option>
       }
     </select>
   </div>
 
   <div class="form-group">
-    <label for="amount">Number of questions</label>
+    <label for="limit">Number of questions</label>
     <input
       type="text"
       inputmode="numeric"
-      id="amount"
-      name="amount"
+      id="limit"
+      name="limit"
       pattern="[0-9]+"
-      [(ngModel)]="amount"
+      [(ngModel)]="limit"
       [appMaxValue]="50"
       required
     />

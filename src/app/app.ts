@@ -1,11 +1,11 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Filters } from './filters/filters';
-import { Observable } from 'rxjs';
-import { ResponseMessages, TriviaFilters, TriviaResponse } from './open-trivia/models';
-import { OpenTriviaService } from './open-trivia/open-trivia';
+import type { Observable } from 'rxjs';
 import { QuestionList } from './question-list/question-list';
 import { About } from './about/about';
+import { TriviaService } from './trivia-api/trivia-api';
+import { Question, QuestionsQueryParams } from './trivia-api/models';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,11 @@ import { About } from './about/about';
   styleUrl: './app.css',
 })
 export class App {
-  private readonly openTrivia = inject(OpenTriviaService);
+  private readonly triviaApi = inject(TriviaService);
 
-  protected errorCodes = ResponseMessages;
-  protected response$?: Observable<TriviaResponse>;
+  protected questions$?: Observable<Question[]>;
 
-  protected getQuestions(filters: TriviaFilters) {
-    this.response$ = this.openTrivia.getTriviaResponse(filters);
+  protected getQuestions(params: QuestionsQueryParams) {
+    this.questions$ = this.triviaApi.getQuestions(params);
   }
 }

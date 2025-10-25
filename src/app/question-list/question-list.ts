@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { TriviaResult } from '../open-trivia/models';
 import { QuestionCard } from '../question-card/question-card';
 import { CategoryHuePipe } from './category-hue-pipe';
+import { Question } from '../trivia-api/models';
 
 @Component({
   selector: 'app-question-list',
@@ -11,5 +11,5 @@ import { CategoryHuePipe } from './category-hue-pipe';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionList {
-  public readonly results = input.required<TriviaResult[]>();
+  public readonly questions = input.required<Question[]>();
 }

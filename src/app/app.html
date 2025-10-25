@@ -4,11 +4,7 @@
 </header>
 <main>
   <app-filters (filtersChange)="getQuestions($event)" />
-  @if (response$ | async; as response) {
-    @if (response.response_code > 0) {
-      <p class="error">{{ errorCodes[1] }}</p>
-    } @else {
-      <app-question-list [results]="response.results" />
-    }
+  @if (questions$ | async; as questions) {
+    <app-question-list [questions]="questions" />
   }
 </main>

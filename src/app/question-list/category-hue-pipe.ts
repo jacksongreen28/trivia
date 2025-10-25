@@ -1,5 +1,5 @@
-import { inject, Pipe, PipeTransform } from '@angular/core';
-import { OpenTriviaService } from '../open-trivia/open-trivia';
+import { Pipe, PipeTransform } from '@angular/core';
+import { Categories } from '../trivia-api/models';
 
 @Pipe({
   name: 'categoryHue',
@@ -7,11 +7,11 @@ import { OpenTriviaService } from '../open-trivia/open-trivia';
 export class CategoryHuePipe implements PipeTransform {
   // Not technically pure because we rely on the outside list of categories,
   // but since the list won't change for the life of the app I'm ok with it.
-  protected readonly categories = inject(OpenTriviaService).categories;
+  private readonly categories = Categories;
 
   transform(category: string): number {
-    const hueStep = Math.round(240 / this.categories().length);
-    const index = this.categories().findIndex((c) => c.name === category);
+    const hueStep = Math.round(240 / this.categories.length);
+    const index = this.categories.findIndex((c) => c === category);
 
     return index * hueStep;
   }

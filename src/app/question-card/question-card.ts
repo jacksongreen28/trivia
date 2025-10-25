@@ -1,23 +1,23 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { TriviaResult } from '../open-trivia/models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TitleCasePipe } from '@angular/common';
-import { AmpersandPipe } from './ampersand-pipe';
+import { Question } from '../trivia-api/models';
+import { SnakeToSentencePipe } from '../trivia-api/snake-to-sentence-pipe';
 
 @Component({
   selector: 'app-question-card',
-  imports: [TitleCasePipe, AmpersandPipe],
+  imports: [TitleCasePipe, SnakeToSentencePipe],
   templateUrl: './question-card.html',
   styleUrl: './question-card.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuestionCard {
   private readonly sanitizer = inject(DomSanitizer);
-  public readonly triviaResult = input.required<TriviaResult>();
+  public readonly question = input.required<Question>();
 
   protected possibleAnswers = computed(() => {
-    const allAnswers = this.triviaResult().incorrect_answers;
-    allAnswers.push(this.triviaResult().correct_answer);
+    const allAnswers = this.question().incorrectAnswers;
+    allAnswers.push(this.question().correctAnswer);
 
     // Shuffle correct answer with the incorrect ones.
     // This shuffle is good enough for my needs here.
@@ -26,11 +26,5 @@ export class QuestionCard {
       .map((answer) => this.sanitizer.bypassSecurityTrustHtml(answer));
   });
 
-  protected safeQuestion = computed(() => {
-    let question = this.triviaResult().question;
-    if (this.triviaResult().type === 'boolean') {
-      question = '<strong>True or false: </strong>' + question;
-    }
-    return this.sanitizer.bypassSecurityTrustHtml(question);
-  });
+  protected safeQuestion = computed(() => this.sanitizer.bypassSecurityTrustHtml(this.question().question.text));
 }

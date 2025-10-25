@@ -1,19 +1,17 @@
 <div class="question" [innerHTML]="safeQuestion()"></div>
 
-@if (triviaResult().type === 'multiple') {
-  <ol>
-    @for (answer of possibleAnswers(); track $index) {
-      <li [innerHTML]="answer"></li>
-    }
-  </ol>
-}
+<ol>
+  @for (answer of possibleAnswers(); track $index) {
+    <li [innerHTML]="answer"></li>
+  }
+</ol>
 
 <details>
   <summary>Answer</summary>
-  <p>{{ triviaResult().correct_answer }}</p>
+  <p>{{ question().correctAnswer }}</p>
 </details>
 
 <div class="chips">
-  <div class="chip" aria-label="Category">{{ triviaResult().category | ampersand }}</div>
-  <div class="chip" aria-label="Difficulty">{{ triviaResult().difficulty | titlecase }}</div>
+  <div class="chip" aria-label="Category">{{ question().category | snakeToSentence }}</div>
+  <div class="chip" aria-label="Difficulty">{{ question().difficulty | titlecase }}</div>
 </div>

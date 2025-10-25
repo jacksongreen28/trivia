@@ -1,7 +1,7 @@
 <ul>
-  @for (result of results(); track $index) {
+  @for (question of questions(); track $index) {
     <li>
-      <app-question-card [triviaResult]="result" [style.--category-hue]="result.category | categoryHue" />
+      <app-question-card [question]="question" [style.--category-hue]="question.category | categoryHue" />
     </li>
   }
 </ul>
